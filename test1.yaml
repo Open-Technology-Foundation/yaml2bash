@@ -1,0 +1,10 @@
+name: John Doe
+age: 30
+languages:
+  - English
+  - French
+attributes:
+  - height: 180
+    weight: 75
+  - hair: brown
+    eyes: blue

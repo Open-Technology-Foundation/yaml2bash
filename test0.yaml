@@ -1,0 +1,32 @@
+# Sample YAML Configuration
+title: YAML Example
+
+database:
+  host: localhost
+  port: 5432
+  username: admin
+  password: secret
+
+servers:
+  - name: server1
+    ip: 192.168.1.1
+  - name: server2
+    ip: 192.168.1.2
+
+logging:
+  level: INFO
+  file: /var/log/example.log
+
+# Multiline string
+description: >
+  This is a YAML example that shows a
+  multi-line string, which is folded.
+
+offices:
+  - name: Headquarters
+    location: Melbourne
+  - name: Branch Office
+    location:
+      city: Sydney
+      country: Australia
+

@@ -1,0 +1,100 @@
+c1: YAML in Markdown Format
+
+c2: Scalars
+c3: A scalar represents a single value, such as a string, number, boolean, or null.
+
+c4: String
+name: John Doe
+
+c5: Integer
+age: 35
+
+c6: Float
+height: 5.9
+
+c7: Boolean
+is_student: false
+
+c8: Null
+nickname: null
+
+c9: Lists
+c10: Lists are sequences of items that can include scalars, maps, or other lists.
+
+c11: Simple List
+items:
+  - Apple
+  - Banana
+  - Cherry
+
+
+c12: List of Dictionaries
+users:
+  - name: John Doe
+    age: 35
+  - name: Jane Smith
+    age: 28
+
+
+c13: Nested Lists
+ingredients:
+  - - Flour
+    - Water
+  - - Strawberries
+    - Sugar
+
+
+c14: Associative Arrays (Dictionaries or Maps)
+c15: Associative arrays are key-value pair collections, also known as dictionaries or maps.
+
+c16: Simple Dictionary
+address:
+  street: 123 Apple St.
+  city: New York
+  postal_code: 12345
+
+c17: Nested Dictionary
+database:
+  host: localhost
+  port: 5432
+  credentials:
+    username: dbuser
+    password: securepassword
+
+c18: Complex Structures
+c19: YAML can represent complex structures through a combination of lists and maps.
+c20: 'NOTE: yaml2bash does not yet handle complex structures.'
+
+# Complex Example:
+joe:
+  - job: Developer
+    skills:
+      - name: Python
+        experience: '3 years'
+      - name: JavaScript
+        experience: '2 years'
+  - job: Writer
+    skills:
+      - name: Copywriting
+        experience: '5 years'
+      - name: SEO
+        experience: '3 years'
+
+
+c21: Multi-Line Strings
+c22: YAML supports multi-line strings without complicated escaping, offering a very readable format.
+
+c23: Literal Block Scalar (\`|\`)
+description1: |
+  This is a description
+  that spans multiple lines
+  without any special formatting.
+
+c24: Folded Block Scalar (\`>\`)
+description2: >
+  This is a folded style description
+  that spans multiple lines, but it
+  will be rendered as a single line
+  with spaces where newlines were.
+
+# fin
