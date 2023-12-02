@@ -59,7 +59,7 @@ def yaml2bash(yaml_file:str) ->list:
 
 # For script mode.
 if __name__ == "__main__":
-  if len(sys.argv) <= 1:
+  if len(sys.argv) <= 1 or sys.argv[1] == '-h' or sys.argv[1] == '--help':
     print('usage: yaml2bash file.yaml [file.yaml...]', file=sys.stderr)
     sys.exit(1)
   decl:list=[]
