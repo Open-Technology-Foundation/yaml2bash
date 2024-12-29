@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Extract variables from yaml file, and output to json.
+Convert yaml file to json.
 """
 import sys
 import json
@@ -18,7 +18,10 @@ def yaml2json(yaml_file):
   print(json.dumps(parsed_yaml, indent=2))
 
 if __name__ == "__main__":
-  if len(sys.argv) > 1:
-    yaml2json(sys.argv[2])
+  if len(sys.argv) < 2 or sys.argv[1] in ('-h', '--help'):
+    print('Usage: yaml2json filename')
+    sys.exit(1)
+
+  yaml2json(sys.argv[1])
 
 #fin
