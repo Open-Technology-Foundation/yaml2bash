@@ -1,0 +1,80 @@
+#!/bin/bash
+# Bash completion for yaml2bash, yaml2json, json2yaml, xml2yaml scripts
+
+_yaml2bash() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    
+    opts="-h --help"
+    
+    if [[ ${cur} == -* ]]; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+    
+    # Complete YAML files
+    COMPREPLY=( $(compgen -f -X '!*.yaml' -- ${cur}) $(compgen -f -X '!*.yml' -- ${cur}) )
+}
+
+_yaml2json() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    
+    opts="-h --help"
+    
+    if [[ ${cur} == -* ]]; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+    
+    # Complete YAML files
+    COMPREPLY=( $(compgen -f -X '!*.yaml' -- ${cur}) $(compgen -f -X '!*.yml' -- ${cur}) )
+}
+
+_json2yaml() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    
+    if [[ ${COMP_CWORD} -eq 1 ]]; then
+        # First argument: input file (JSON or stdin)
+        if [[ ${cur} == -* ]]; then
+            COMPREPLY=( $(compgen -W "-" -- ${cur}) )
+        else
+            COMPREPLY=( $(compgen -f -X '!*.json' -- ${cur}) $(compgen -W "-" -- ${cur}) )
+        fi
+    elif [[ ${COMP_CWORD} -eq 2 ]]; then
+        # Second argument: output file (YAML or stdout)
+        if [[ ${cur} == -* ]]; then
+            COMPREPLY=( $(compgen -W "-" -- ${cur}) )
+        else
+            COMPREPLY=( $(compgen -f -X '!*.yaml' -- ${cur}) $(compgen -f -X '!*.yml' -- ${cur}) $(compgen -W "-" -- ${cur}) )
+        fi
+    fi
+}
+
+_xml2yaml() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    
+    if [[ ${COMP_CWORD} -eq 1 ]]; then
+        # First argument: XML input file
+        COMPREPLY=( $(compgen -f -X '!*.xml' -- ${cur}) )
+    elif [[ ${COMP_CWORD} -eq 2 ]]; then
+        # Second argument: YAML output file
+        COMPREPLY=( $(compgen -f -X '!*.yaml' -- ${cur}) $(compgen -f -X '!*.yml' -- ${cur}) )
+    fi
+}
+
+# Register the completion functions
+complete -F _yaml2bash yaml2bash
+complete -F _yaml2json yaml2json
+complete -F _json2yaml json2yaml
+complete -F _xml2yaml xml2yaml
